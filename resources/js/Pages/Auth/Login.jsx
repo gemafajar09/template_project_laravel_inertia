@@ -91,7 +91,7 @@ export default function Login({errors}){
                         {error && <p style={{ color: 'red' }}>{error}</p>}
                         
                         <div className="flex justify-end">
-                            <button type="button" onClick={HandlerLogin} className="w-32 text-white bg-yellow-200 hover:bg-yellow-300 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">{isloading ? 'Loading ...' : 'Log In'}</button>
+                            <button type="button" onClick={HandlerLogin} className="w-32 text-white bg-blue-200 hover:bg-blue-300 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">{isloading ? 'Loading ...' : 'Log In'}</button>
 
                         </div>
                             

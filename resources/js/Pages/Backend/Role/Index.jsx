@@ -1,4 +1,4 @@
-import Template from "@/Components/Backend/Template";
+import Template from "@/Components/Admin/Template";
 import Breadcump from "@/Components/Breadcump";
 import React, { useState, useEffect } from 'react';
 import { SearchOutlined } from '@ant-design/icons';
@@ -136,6 +136,21 @@ export default function Index({auth}) {
             title: 'No',
             dataIndex: 'id',
             rowScope: 'row',
+            width: '5%',
+            align: 'center',
+            onHeaderCell: () => ({
+                style: {
+                  backgroundColor: '#f0f0f0', 
+                  color: 'black',
+                },
+            }),
+            onCell: () => ({
+                style: {
+                  backgroundColor: 'transparent', 
+                  color: 'black',
+                },
+            }),
+            render: (text, record, index) => index + 1
         },
         {
             title: 'Role',

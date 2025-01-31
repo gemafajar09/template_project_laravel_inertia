@@ -18,7 +18,7 @@ const Navbar = () => {
 
   return (
     <>
-        <nav className="fixed p-4 top-0 z-50 w-full bg-[#eae9e9] border-b border-gray-200">
+        <nav className="fixed p-4 top-0 z-50 w-full">
             <div className="px-3 py-1 lg:px-5 lg:pl-3">
                 <div className="flex items-center justify-between">
                     <div className="flex items-center justify-start rtl:justify-end">
@@ -29,6 +29,7 @@ const Navbar = () => {
 
                         <a href="#" className="flex items-center ms-2 md:me-24">
                             <img src={`${props.rootUrl}/mediatama.png`} className="h-8 mr-3" alt="logo" />
+                            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white hidden xs:block sm:block">Mediatama Web</span>
                         </a>
                     </div>
 
@@ -36,7 +37,7 @@ const Navbar = () => {
                         {/*  */}
                         <div className="relative inline-flex items-center px-3 py-1.2 text-sm font-medium text-black rounded-full">
                             <IoNotificationsOutline className="text-black w-6 h-6 cursor-pointer"/>
-                            <span className="absolute -top-1 -right-1 inline-flex items-center justify-center w-3 h-3 text-xs font-semibold text-black bg-blue-600 rounded-full sm:w-4 sm:h-4 lg:w-4 lg:h-4 lg:text-xs">
+                            <span className="absolute -top-1 -right-1 inline-flex items-center justify-center w-3 h-3 text-xs font-semibold text-white bg-blue-600 rounded-full sm:w-4 sm:h-4 lg:w-4 lg:h-4 lg:text-xs">
                             1
                             </span>
                         </div>

@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Core\CoreController;
 use App\Models\DataRoleMenu;
+use App\Models\Menu;
 use App\Models\Role;
+use App\Models\Submenu;
+use App\Models\Submenudua;
 use App\Models\SubRole;
 use Dflydev\DotAccessData\Data;
 use Illuminate\Http\Request;
@@ -25,7 +28,7 @@ class MenuController extends Controller
         $submenus = DB::table('submenus')
             ->select('submenus.id', 'submenus.name', 'submenus.url', 'submenus.menu_id')
             ->get()->map(function ($submenu) {
-                $submenu->submenusdua = DB::table('submenuduas')
+                $submenu->submenu = DB::table('submenuduas')
                 ->where('submenuduas.submenu_id', $submenu->id)
                 ->select('submenuduas.id', 'submenuduas.name', 'submenuduas.url', 'submenuduas.menu_id', 'submenuduas.submenu_id')
                 ->get() ?? [];
@@ -34,7 +37,7 @@ class MenuController extends Controller
             
         // Menata submenu dalam struktur yang lebih mudah digunakan
         $menusWithSubmenus = $menus->map(function ($menu) use ($submenus) {
-            $menu->submenus = $submenus->where('menu_id', $menu->id)->values();
+            $menu->submenu = $submenus->where('menu_id', $menu->id)->values();
             return $menu;
         });
         
@@ -91,6 +94,45 @@ class MenuController extends Controller
         $data['menu'] = $array ?? [];
 
         return response()->json($data);
+    }
+
+    public function tambahmenu(){
+        return Inertia::render('Backend/Menu/Post');
+    }
+
+    public function simpan(Request $r){
+        DB::beginTransaction();
+        try {
+            //code...
+            if($r->menu_id != null){
+                if($r->submenu_id != null){
+                    Submenudua::create([
+                        'menu_id' => $r->menu_id,
+                        'submenu_id' => $r->submenu_id,
+                        'name' => $r->submenudua_name,
+                        'url' => $r->submenudua_url,
+                    ]);
+                }else{
+                    Submenu::create([
+                        'menu_id' => $r->menu_id,
+                        'name' => $r->submenu_name,
+                        'url' => $r->submenu_url,
+                    ]);
+                }
+            }else{
+                Menu::create([
+                    'name' => $r->menu_name,
+                    'url' => $r->menu_url,
+                ]);
+            }
+
+            DB::commit();
+            return back()->withErrors("Data Berhasil Disimpan");
+        } catch (\Throwable $th) {
+            //throw $th;
+            return back()->withErrors(throw $th);
+            DB::rollBack();
+        }
     }
 
 }

@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('/fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.dt-input {
+    @apply xl:w-1/2 lg:w-1/2 md:w-1/2 block w-full rounded-md border-gray-300 shadow-sm sm:text-sm;
+}
+
+div.dt-container .dt-search input {
+    @apply  block w-full;
+}

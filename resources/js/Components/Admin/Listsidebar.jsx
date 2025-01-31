@@ -4,11 +4,25 @@ import { useEffect, useState } from 'react';
 import { IoSearch } from "react-icons/io5";
 import { RiRadioButtonLine } from "react-icons/ri";
 import { MdCircle } from "react-icons/md";
+import { BiFoodMenu } from "react-icons/bi"
 import { CgDatabase } from "react-icons/cg";
 import Dropdown from '../Dropdown';
+import Subdropdown from '../Subdropdown';
 
 export default function ListSidebar({type}){
     const {props} = usePage()
+
+    const [menus, setMenus] = useState([]);
+
+    useEffect(() => {
+        getMenu();
+    }, []);
+
+    function getMenu(){
+        axios.get(route('menu.listmenu')).then(res => {
+            setMenus(res.data.menu);
+        });
+    }
     
     return (
         <>
@@ -43,6 +57,61 @@ export default function ListSidebar({type}){
                         </Link>
                     </li>
                 </Dropdown>
+
+                {
+                    menus.map((menu, i) => {
+                        
+                        return menu.submenu.length > 0 ?
+                        (
+                            <Dropdown key={i} icon={<BiFoodMenu />} title={menu.name}>
+                                {
+                                    menu.submenu.map((submenu, x) => {
+                                        return submenu.submenu.length > 0 ?
+                                            <Subdropdown key={x} icon={<MdCircle/>} title={submenu.name}>
+                                                {
+                                                    submenu.submenu.map((subsubmenu, y) => (
+                                                            <li key={y}>
+                                                                <Link
+                                                                    href={route(subsubmenu.url ?? 'admin.home')}
+                                                                    className="flex items-center p-2 text-gray-900 rounded-lg hover:text-white hover:bg-gray-700 group"
+                                                                >
+                                                                    <MdCircle />
+                                                                    <span className="ms-3">{subsubmenu.name}</span>
+                                                                </Link>
+                                                            </li>
+                                                    ))
+                                                }
+                                            </Subdropdown>
+                                        :
+                                            
+                                            <li key={x}>
+                                                <Link
+                                                    href={route(submenu.url ?? 'admin.home')}
+                                                    className="flex items-center p-2 text-gray-900 pl-5 rounded-lg hover:text-white hover:bg-gray-700 group"
+                                                >
+                                                    <MdCircle  />
+                                                    <span className="ms-3">{submenu.name}</span>
+                                                </Link>
+                                            </li>
+                                        
+                                        })
+                                }
+                            </Dropdown>
+                        )
+                            :
+                        (
+                            <li key={i}>
+                                <Link
+                                    href={route(menu.url ?? 'admin.home')}
+                                    className="flex items-center p-2 text-gray-900 rounded-lg hover:text-white hover:bg-gray-700 group"
+                                >
+                                    <BiFoodMenu  />
+                                    <span className="ms-3">{menu.name}</span>
+                                </Link>
+                            </li>
+                        )
+                    })
+                }
                 
             </ul>
         </>
