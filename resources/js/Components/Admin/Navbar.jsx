@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { IoMenu, IoPerson, IoPowerSharp, IoNotificationsOutline, IoTime, IoCalendar  } from "react-icons/io5";
-import Swal from 'sweetalert2'
 import ListSidebar from "./ListSidebar";
 import moment from "moment";
 import { formatTanggal } from "@/Utils/TanggalIndo";

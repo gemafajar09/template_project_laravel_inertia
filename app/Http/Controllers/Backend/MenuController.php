@@ -90,8 +90,12 @@ class MenuController extends Controller
     public function listmenu(){
         $user = Auth::user();
         $menu = DataRoleMenu::where('role_id', $user->role_id)->where('subrole_id', $user->subrole_id ?? 0)->first();
-        $array = json_decode($menu->data);
-        $data['menu'] = $array ?? [];
+        if($menu){
+            $array = json_decode($menu->data);
+        }else{
+            $array = [];
+        }
+        $data['menu'] = $array;
 
         return response()->json($data);
     }
@@ -132,6 +136,28 @@ class MenuController extends Controller
             //throw $th;
             return back()->withErrors(throw $th);
             DB::rollBack();
+        }
+    }
+
+    public function hapus($menu_id, $submenu_id = null, $submenudua_id = null){
+        DB::beginTransaction();
+        try {
+            //code...
+            if($menu_id != null && $submenu_id != null && $submenudua_id != null){
+                Submenudua::whereId($submenudua_id)->delete();
+            }elseif($menu_id != null && $submenu_id != null){
+                Submenu::whereId($submenu_id);
+                Submenudua::whereSubmenuId($submenu_id)->delete();
+            }elseif($menu_id != null){
+                Menu::whereId($menu_id)->delete();
+                Submenu::whereMenuId($submenu_id);
+                Submenudua::whereSubmenuId($submenu_id)->delete();
+            }
+            DB::commit();
+            return back()->withErrors('Berhasil Dihapus');
+        } catch (\Throwable $th) {
+            //throw $th;
+            return back()->withErrors(throw $th);
         }
     }
 

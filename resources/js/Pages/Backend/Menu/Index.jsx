@@ -5,8 +5,9 @@ import { useEffect } from "react";
 import Toastify from 'toastify-js'
 import "toastify-js/src/toastify.css"
 import { useState } from "react";
+import Swal from 'sweetalert2'
 import { FaSearch } from "react-icons/fa";
-import { IoAdd, IoAddCircle, IoAddCircleOutline, IoSearch } from "react-icons/io5";
+import { IoAdd, IoAddCircle, IoAddCircleOutline, IoSearch, IoTrash } from "react-icons/io5";
 import { Button, Divider, Input, Modal } from "antd";
 
 export default function Menu({auth, roles, subroles, menus}) {
@@ -186,6 +187,22 @@ export default function Menu({auth, roles, subroles, menus}) {
     const simpanmenubaru = () => {
         router.post(route('menu.simpan'),addmenu)
     }
+
+    const handlerHapus = async (menu_id, submenu_id = null, submenu2_id = null) => {        
+        Swal.fire({
+            title: "Apa kamu yakin?",
+            text: "Anda tidak akan bisa mengembalikan ini!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Ya, hapus!"
+        }).then((result) => {
+            if (result.isConfirmed) {
+              router.get(route('menu.hapus',[menu_id, submenu_id, submenu2_id]))
+            }
+        });
+    }
     return (
         <Template user={auth}>
 
@@ -241,6 +258,7 @@ export default function Menu({auth, roles, subroles, menus}) {
                                         />
                                         {menu.name}
                                         <button onClick={() => getDataMenu(menu.id)} className="bg-green-500 flex items-center text-white rounded-full"><IoAddCircle/></button>
+                                        <button onClick={() => handlerHapus(menu.id)} className="bg-red-500 flex items-center text-white rounded-full"><IoTrash/></button>
                                     </div>
                                     {menu.submenu && menu.submenu.length > 0 && (
                                         <ul className="ml-8 gap-2">
@@ -258,6 +276,7 @@ export default function Menu({auth, roles, subroles, menus}) {
                                                             />
                                                             {submenu.name}
                                                             <button onClick={() => getDataMenu(menu.id, submenu.id)} className="bg-green-500 flex items-center text-white rounded-full"><IoAddCircle/></button>    
+                                                            <button onClick={() => handlerHapus(menu.id, submenu.id)} className="bg-red-500 flex items-center text-white rounded-full"><IoTrash/></button>
                                                         </div>
                                                         {submenu.submenu && submenu.submenu.length > 0 && (
                                                            <ul className="ml-8 gap-2">
@@ -274,6 +293,8 @@ export default function Menu({auth, roles, subroles, menus}) {
                                                                                onChange={() => tambahsubmenu2(submenudua)}
                                                                            />
                                                                            {submenudua.name}
+                                                                           
+                                                                            <button onClick={() => handlerHapus(menu.id, submenu.id, submenudua.id)} className="bg-red-500 flex items-center text-white rounded-full"><IoTrash/></button>
                                                                        </div>
                                                                    </li>
                                                                )

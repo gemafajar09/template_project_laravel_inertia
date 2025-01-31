@@ -25,6 +25,7 @@ Route::middleware('sudah_login')->group(function () {
     Route::post('/menu.store',[MenuController::class,'store'] )->name('menu.store');
     Route::get('/menu.listmenu',[MenuController::class,'listmenu'] )->name('menu.listmenu');
     Route::post('/menu.simpan',[MenuController::class,'simpan'] )->name('menu.simpan');
+    Route::get('/menu.hapus/{menu_id}/{submenu_id?}/{submenudua_id?}',[MenuController::class,'hapus'] )->name('menu.hapus');
 
     // Data Master Role
     Route::get('/role',[MasterRoleController::class,'index'] )->name('role');
