@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\{
     DashboardController,
     MasterRoleController,
-    MenuController
+    MenuController,
+    UserController
 };
 
 Route::middleware('belum_login')->group(function () {
@@ -36,4 +37,7 @@ Route::middleware('sudah_login')->group(function () {
     Route::post('/role.tambahrole',[MasterRoleController::class,'tambahrole'] )->name('role.tambahrole');
     Route::get('/role.hapus/{id}',[MasterRoleController::class,'hapus'] )->name('role.hapus');
     // ##################################################################################################################
+
+    // Data User
+    Route::get('/user',[UserController::class,'index'] )->name('user');
 });

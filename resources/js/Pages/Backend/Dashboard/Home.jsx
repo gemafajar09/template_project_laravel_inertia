@@ -8,7 +8,7 @@ export default function Home({auth}) {
     return (
         <Template user={auth}>
             <div className="p-6">
-                <DatatableComponent title={['No','Nama','Alamat','Aksi']}>
+                {/* <DatatableComponent title={['No','Nama','Alamat','Aksi']}>
                     <tbody>
                         <tr className="border-t">
                             <td className="px-4 py-2">1</td>
@@ -101,7 +101,7 @@ export default function Home({auth}) {
                             <td className="px-4 py-2"></td>
                         </tr>
                     </tbody>
-                </DatatableComponent>
+                </DatatableComponent> */}
             </div>
         </Template>
     );

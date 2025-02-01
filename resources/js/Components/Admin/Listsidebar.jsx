@@ -5,7 +5,7 @@ import { IoSearch } from "react-icons/io5";
 import { RiRadioButtonLine } from "react-icons/ri";
 import { MdCircle } from "react-icons/md";
 import { BiFoodMenu } from "react-icons/bi"
-import { CgDatabase } from "react-icons/cg";
+import { HiOutlineDesktopComputer } from "react-icons/hi";
 import Dropdown from '../Dropdown';
 import Subdropdown from '../Subdropdown';
 
@@ -16,7 +16,7 @@ export default function ListSidebar({type}){
 
     useEffect(() => {
         getMenu();
-    }, []);
+    }, [props]);
 
     function getMenu(){
         axios.get(route('menu.listmenu')).then(res => {
@@ -43,27 +43,12 @@ export default function ListSidebar({type}){
                     </div>
                 </li>
 
-                <Dropdown icon={<CgDatabase />} title={"Data Master"}>
-                    <li>
-                        <Link href={route('role')} className="flex gap-1 items-center w-full p-2 text-black hover:text-white rounded-lg pl-5 group hover:bg-gray-700">
-                            <MdCircle  />
-                            <span className="ms-3">Role</span>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href={route('menu')} className="flex gap-1 items-center w-full p-2 text-black hover:text-white rounded-lg pl-5 group hover:bg-gray-700">
-                            <MdCircle  />
-                            <span className="ms-3">Menu</span>
-                        </Link>
-                    </li>
-                </Dropdown>
-
                 {
                     menus.map((menu, i) => {
                         
                         return menu.submenu.length > 0 ?
                         (
-                            <Dropdown key={i} icon={<BiFoodMenu />} title={menu.name}>
+                            <Dropdown key={i} icon={<HiOutlineDesktopComputer />} title={menu.name}>
                                 {
                                     menu.submenu.map((submenu, x) => {
                                         return submenu.submenu.length > 0 ?
@@ -105,7 +90,7 @@ export default function ListSidebar({type}){
                                     href={route(menu.url ?? 'admin.home')}
                                     className="flex items-center p-2 text-gray-900 rounded-lg hover:text-white hover:bg-gray-700 group"
                                 >
-                                    <BiFoodMenu  />
+                                    <HiOutlineDesktopComputer  />
                                     <span className="ms-3">{menu.name}</span>
                                 </Link>
                             </li>
