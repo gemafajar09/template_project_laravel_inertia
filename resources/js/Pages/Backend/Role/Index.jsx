@@ -289,11 +289,8 @@ export default function Index({auth}) {
         <Template user={auth}>
             <Breadcump nama={'Role'}/>
             <div className="border p-5 rounded-md shadow-md mt-5">
-                <div className="flex justify-center mb-5">
-                    <h1 className="text-2xl font-bold border-b-2">Master Role</h1>
-                </div>
                 <div className="flex justify-end mb-5">
-                    <button onClick={() => setModalRole(true)} className="p-2 bg-blue-500 text-white rounded">Tambah Role Baru</button>
+                    <Button onClick={() => setModalRole(true)} className="p-3 bg-slate-700 text-white rounded">Tambah Data</Button>
                 </div>
                 <Table scroll={{ x: 'max-content' }} columns={columns} dataSource={data} />
             </div>

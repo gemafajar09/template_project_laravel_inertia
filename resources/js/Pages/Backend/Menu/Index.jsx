@@ -238,11 +238,11 @@ export default function Menu({auth, roles, subroles, menus}) {
                                     ""
                             }
                         </div>
-                        <Button onClick={() => getMenuUser()} className="bg-stone-800 flex items-center text-white p-3 rounded-md"><IoSearch/></Button>
-                        <Button onClick={() => setAdd(true)} className="bg-stone-800 flex items-center text-white p-3 rounded-md"><IoAdd/></Button>
+                        <Button onClick={() => getMenuUser()} className="bg-slate-700 flex items-center text-white p-3 rounded-md"><IoSearch/></Button>
+                        <Button onClick={() => setAdd(true)} className="bg-slate-700 flex items-center text-white p-3 rounded-md"><IoAdd/></Button>
                         
                     </div>
-                    <Button onClick={() => handlerSimpanData()} className="bg-green-500 text-white rounded-md p-3">Simpan</Button>
+                    <Button onClick={() => handlerSimpanData()} className="bg-slate-700 text-white rounded-md p-3">Simpan</Button>
                 </div>
 
                 <div className="grid xl:grid-cols-6 lg:grid-cols-5 md:grid-cols-3 sm:grid-cols-2 gap-5">
@@ -257,8 +257,8 @@ export default function Menu({auth, roles, subroles, menus}) {
                                             onChange={() => tambahmenuutama(menu)}
                                         />
                                         {menu.name}
-                                        <button onClick={() => getDataMenu(menu.id)} className="bg-green-500 flex items-center text-white rounded-full"><IoAddCircle/></button>
-                                        <button onClick={() => handlerHapus(menu.id)} className="bg-red-500 flex items-center text-white rounded-full"><IoTrash/></button>
+                                        <button onClick={() => getDataMenu(menu.id)} className="bg-slate-700 flex items-center text-white rounded-full"><IoAddCircle/></button>
+                                        <button onClick={() => handlerHapus(menu.id)} className="bg-slate-700 flex items-center text-white rounded-full"><IoTrash/></button>
                                     </div>
                                     {menu.submenu && menu.submenu.length > 0 && (
                                         <ul className="ml-8 gap-2">
@@ -275,8 +275,8 @@ export default function Menu({auth, roles, subroles, menus}) {
                                                                 onChange={() => tambahsubmenu1(submenu)}
                                                             />
                                                             {submenu.name}
-                                                            <button onClick={() => getDataMenu(menu.id, submenu.id)} className="bg-green-500 flex items-center text-white rounded-full"><IoAddCircle/></button>    
-                                                            <button onClick={() => handlerHapus(menu.id, submenu.id)} className="bg-red-500 flex items-center text-white rounded-full"><IoTrash/></button>
+                                                            <button onClick={() => getDataMenu(menu.id, submenu.id)} className="bg-slate-700 flex items-center text-white rounded-full"><IoAddCircle/></button>    
+                                                            <button onClick={() => handlerHapus(menu.id, submenu.id)} className="bg-slate-700 flex items-center text-white rounded-full"><IoTrash/></button>
                                                         </div>
                                                         {submenu.submenu && submenu.submenu.length > 0 && (
                                                            <ul className="ml-8 gap-2">
