@@ -18,7 +18,7 @@ class BelumLogin
     {
         // 
         if (Auth::check()) {
-            return redirect('admin/admin.home');
+            return redirect('admin.home');
         }
         return $next($request);
         // 

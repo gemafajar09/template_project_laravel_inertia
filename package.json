@@ -27,8 +27,6 @@
         "@lottiefiles/lottie-player": "^2.0.2",
         "@react-google-maps/api": "^2.20.3",
         "antd": "^5.19.2",
-        "datatables.net": "^2.2.1",
-        "datatables.net-dt": "^2.2.1",
         "file-saver": "^2.0.5",
         "flowbite": "^2.3.0",
         "framer-motion": "^11.3.21",
