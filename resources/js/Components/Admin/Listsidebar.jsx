@@ -58,7 +58,7 @@ export default function ListSidebar({type}){
                                                             <li key={y}>
                                                                 <Link
                                                                     href={route(subsubmenu.url ?? 'admin.home')}
-                                                                    className="flex items-center p-2 text-gray-900 rounded-lg hover:text-white hover:bg-gray-700 group"
+                                                                    className="flex items-center p-2 text-gray-600 rounded-lg hover:text-white hover:bg-gray-700 group"
                                                                 >
                                                                     <MdCircle />
                                                                     <span className="ms-3">{subsubmenu.name}</span>
@@ -72,7 +72,7 @@ export default function ListSidebar({type}){
                                             <li key={x}>
                                                 <Link
                                                     href={route(submenu.url ?? 'admin.home')}
-                                                    className="flex items-center p-2 text-gray-900 pl-5 rounded-lg hover:text-white hover:bg-gray-700 group"
+                                                    className="flex items-center p-2 text-gray-600 pl-5 rounded-lg hover:text-white hover:bg-gray-600 group"
                                                 >
                                                     <MdCircle  />
                                                     <span className="ms-3">{submenu.name}</span>
@@ -88,7 +88,7 @@ export default function ListSidebar({type}){
                             <li key={i}>
                                 <Link
                                     href={route(menu.url ?? 'admin.home')}
-                                    className="flex items-center p-2 text-gray-900 rounded-lg hover:text-white hover:bg-gray-700 group"
+                                    className="flex items-center p-2 text-gray-600 rounded-lg hover:text-white hover:bg-gray-600 group"
                                 >
                                     <HiOutlineDesktopComputer  />
                                     <span className="ms-3">{menu.name}</span>

@@ -10,7 +10,7 @@ const Dropdown = ({ children, icon, title }) => {
 
   return (
     <li>
-        <button onClick={() => toggleDropdown()} type="button" className="flex w-full items-center justify-between p-2 text-black hover:text-white rounded-lg hover:bg-gray-700 group">
+        <button onClick={() => toggleDropdown()} type="button" className="flex w-full items-center justify-between p-2 text-gray-600 hover:text-white rounded-lg hover:bg-gray-700 group">
             <div className='flex gap-1 items-center'>
                 {icon}
                 <span className="flex-1 ms-3">{title}</span>

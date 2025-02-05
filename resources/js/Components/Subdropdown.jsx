@@ -10,7 +10,7 @@ const Subdropdown = ({ children, icon, title }) => {
 
   return (
     <li>
-        <button onClick={() => toggleDropdown()} type="button" className="flex gap-1 items-center justify-between w-full p-1 text-black hover:text-white rounded-lg pl-5 group hover:bg-gray-700">
+        <button onClick={() => toggleDropdown()} type="button" className="flex gap-1 items-center justify-between w-full p-1 text-gray-600 hover:text-white rounded-lg pl-5 group hover:bg-gray-700">
             <div className='flex gap-1 justify-between'>
                 {icon}
                 <span className="flex-1 ms-3 whitespace-nowrap">{title}</span>

@@ -16,10 +16,10 @@ export default function Login({errors}){
     const {props} = usePage()
 
     useEffect(() => {
-        if(props.errors.length > 0){
+        if(props.errors[0]){
             handlerToast(props.errors[0])
         }
-    },[])
+    },[props])
 
     function handlerToast(pesan) {
         toastify({
@@ -38,9 +38,7 @@ export default function Login({errors}){
             router.post(route('login.action'),{
                 email: email, password: password
             })
-        } catch (error) {
-            console.log(error);
-            
+        } catch (error) {            
             setIsloading(false)
         } finally {
             setIsloading(false)

@@ -21,10 +21,10 @@ class AuthController extends Controller
                 return Redirect::route('admin.home');
             }
             
-            return Redirect::back()->withErrors('Invalid Emaik or Password');
+            return Redirect::back()->withErrors('Invalid Email or Password');
             
         } catch (\Throwable $th) {
-            return back()->withErrors($th);
+            return back()->withErrors('Invalid Email or Password');
         }
     }
 
